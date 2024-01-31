@@ -26,7 +26,7 @@ const slice = createSlice({
 export const authReducer = slice.reducer
 
 export const authActions = slice.actions
-export const { setIsLoggedIn } = slice.actions
+// export const { setIsLoggedIn } = slice.actions
 
 // export const authReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
 //   switch (action.type) {
@@ -51,7 +51,7 @@ export const loginTC =
       .login(data)
       .then((res) => {
         if (res.data.resultCode === 0) {
-          dispatch(setIsLoggedIn({ isLoggedIn: true }))
+          dispatch(authActions.setIsLoggedIn({ isLoggedIn: true }))
           // dispatch(setAppStatusAC("succeeded"))
           dispatch(appActions.setAppStatus({ status: "succeeded" }))
         } else {
@@ -69,7 +69,7 @@ export const logoutTC = (): AppThunk => (dispatch) => {
     .logout()
     .then((res) => {
       if (res.data.resultCode === 0) {
-        dispatch(setIsLoggedIn({ isLoggedIn: false }))
+        dispatch(authActions.setIsLoggedIn({ isLoggedIn: false }))
         dispatch(todolistActions.clearTodolistsData())
         // dispatch(setAppStatusAC("succeeded"))
         dispatch(appActions.setAppStatus({ status: "succeeded" }))
