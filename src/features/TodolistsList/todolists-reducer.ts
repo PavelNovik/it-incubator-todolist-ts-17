@@ -33,6 +33,9 @@ const slice = createSlice({
     setTodolists: (state, action: PayloadAction<{ todolists: Array<TodolistType> }>) => {
       return action.payload.todolists.map((tl) => ({ ...tl, filter: "all", entityStatus: "idle" }))
     },
+    clearTodolistsData: (state, action: PayloadAction) => {
+      return []
+    },
   },
 })
 export const todolistsReducer = slice.reducer
